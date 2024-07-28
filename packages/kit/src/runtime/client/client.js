@@ -1510,7 +1510,8 @@ function setup_preload() {
 
 	/** @param {Event} event */
 	function tap(event) {
-		preload(/** @type {Element} */ (event.composedPath()[0]), 1);
+		if (!event.defaultPrevented)
+			preload(/** @type {Element} */ (event.composedPath()[0]), 1);
 	}
 
 	container.addEventListener('mousedown', tap);
